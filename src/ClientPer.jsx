@@ -113,12 +113,14 @@ const ClientPer = () => {
         { label: 'תקין', value: 'Correct' },
         { label: 'לא תקין', value: 'Incorrect' },
     ];
+        const baseUrl = "https://ayali-server.onrender.com";
+
     useEffect(() => {
         save();
     }, []);
     const save = async () => {
         try {
-            const { data } = await axios.get(`/clients/${phone}`);
+            const { data } = await axios.get(`${baseUrl}/clients/${phone}`);
             const client = data.client || data; // לפי מה שהשרת שלך מחזיר
 
             if (client) {
@@ -216,7 +218,7 @@ const ClientPer = () => {
             Other_des: OtherReasonText,
         };
 
-        const { data } = await axios.put(`/clients/${phone}`, referralReasons);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, referralReasons);
         console.log(data);
         navigate(`/clients/${phone}`)
 
@@ -235,7 +237,7 @@ const ClientPer = () => {
             Intermenstrual_bleeding,
             Normal_weight
         };
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible1(false)
     }
@@ -250,7 +252,7 @@ const ClientPer = () => {
             AFC: AFC,
             Genetics: Genetics
         };
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible2(false)
     }
@@ -265,7 +267,7 @@ const ClientPer = () => {
                 Medications_and_Vitamins,
             }
         };
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible4(false)
     }
@@ -289,7 +291,7 @@ const ClientPer = () => {
             Genetics // Correct / Incorrect
         }
 
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible3(false)
     };
@@ -313,7 +315,7 @@ const ClientPer = () => {
             IVIG: IVIG || null
         };
 
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible5(false)
     };
@@ -327,7 +329,7 @@ const ClientPer = () => {
             Instructions_regarding_discontinuation: Instructions_regarding_discontinuation || null, // "Yes" / "No"
             Moxifen: Moxifen || null // "Yes" / "No"
         }
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible6(false)
     };
@@ -338,7 +340,7 @@ const ClientPer = () => {
             Birth_history,
             Medications
         };
-        const { data } = await axios.put(`clients/${phone}`, requestBody);
+        const { data } = await axios.put(`${baseUrl}/clients/${phone}`, requestBody);
         console.log(data);
         setVisible7(false)
     };
