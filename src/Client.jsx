@@ -60,11 +60,12 @@ const Client = () => {
     const [des, setDes] = useState('');
     const { phone } = useParams();
     const [products, setProducts] = useState([]);
+    const baseUrl = "https://ayali-server.onrender.com";
     useEffect(() => {
         getClientDocuments()
     }, []);
     const goSearch = async () => {
-        const { data } = await axios.get(`http://localhost:3050/clients/${phone}`);
+        const { data } = await axios.get(`${baseUrl}/clients/${phone}`);
         console.log("data:", data.email);
         if (!data.email)
             massage.current.show({ severity: 'error', detail: "Put Email First", life: 2000 })
@@ -113,7 +114,7 @@ const Client = () => {
         };
 
         try {
-            const { data } = await axios.post(`http://localhost:3050/clients/${phone}/document`, documentData);
+            const { data } = await axios.post(`${baseUrl}/clients/${phone}/document`, documentData);
             console.log("Document added:", data);
 
         } catch (err) {
@@ -154,7 +155,7 @@ const Client = () => {
         };
 
         try {
-            const { data } = await axios.put(`http://localhost:3050/clients/${phone}`, clientData);
+            const { data } = await axios.put(`${baseUrl}/clients/${phone}`, clientData);
             if (!data) {
                 console.log("לא הצליח לשמור");
             } else {
