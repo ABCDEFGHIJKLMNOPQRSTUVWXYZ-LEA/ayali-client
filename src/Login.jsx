@@ -17,6 +17,7 @@ const Login = () => {
     const [userName, setUserName] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const massage = useRef(null)
+    const baseUrl = "https://ayali-server.onrender.com";
 
     const fetchfunc = async (e) => {
         e.preventDefault();
@@ -25,7 +26,7 @@ const Login = () => {
             userPassword: userPassword
         }
         try {
-            const { data } = await axios.post("http://localhost:3050/auth/login", data1)
+            const { data } = await axios.post("${baseUrl}/auth/login", data1)
             massage.current.show({ severity: 'success', detail: "You have Logged in successfully!", life: 2000 })
             console.log(data);
             localStorage.setItem('User', data)
