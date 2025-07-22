@@ -26,7 +26,7 @@ const Login = () => {
             userPassword: userPassword
         }
         try {
-            const { data } = await axios.post("${baseUrl}/auth/login", data1)
+            const { data } = await axios.post(`${baseUrl}/auth/login`, data1)
             massage.current.show({ severity: 'success', detail: "You have Logged in successfully!", life: 2000 })
             console.log(data);
             localStorage.setItem('User', data)
