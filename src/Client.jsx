@@ -80,7 +80,7 @@ const Client = () => {
         }
     }
     const getClientDocuments = async () => {
-        const { data } = await axios.get(`http://localhost:3050/clients/${phone}`)
+        const { data } = await axios.get(`${baseUrl}/clients/${phone}`)
         console.log(data);
         setPhone(data.phone || '');
         setPhone2(data.phone2 || []);
