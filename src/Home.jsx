@@ -9,14 +9,17 @@ import 'primeicons/primeicons.css';
 
 const Home = () => {
     const navigate = useNavigate();
+    
 
     const [phone, setPhone] = useState();
-    const massage = useRef(null)
+    const massage = useRef(null);
+        const baseUrl = "https://ayali-server.onrender.com";
+
     const sendFind = async () => {
         if (!phone)
             return massage.current.show({ severity: 'error', detail: "please fill the number!", life: 2000 })
         try {
-            const { data } = await axios.get(`/clients/${phone}`)
+            const { data } = await axios.get(`${baseUrl}/clients/${phone}`)
             if (data)
                 navigate(`/clients/${phone}`);
         }
@@ -28,7 +31,7 @@ const Home = () => {
                 }, 3000);
             }
             else {
-                await axios.post(`/clients/`, { phone })
+                await axios.post(`${baseUrl}/clients/`, { phone })
                 navigate(`/clients/${phone}`);
             }
         }
